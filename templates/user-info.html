@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Username: {{ user.username[0]|upper }}{{ user.username[1:] }}</h1>
+    <h3>{{ user.first_name[0]|upper }}{{ user.first_name[1:] }} {{ user.last_name[0]|upper }}{{ user.last_name[1:] }}</h3>
+    <h4><a href="mailto: {{ user.email }}">{{ user.email }}</a></h4>
+{% endblock content %}

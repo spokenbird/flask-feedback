@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-info">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    <form action="/register" method="POST">
+        {{ form.hidden_tag() }}
+
+        {% for field in form
+            if field.widget.input_type != 'hidden' %}
+    
+            <div class="form-group">
+                {{ field.label }}
+                {{ field(class_="form-control") }}
+
+                {% for error in errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+    
+        {% endfor %}
+    
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock content %}
