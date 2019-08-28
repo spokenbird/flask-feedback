@@ -23,6 +23,7 @@ class User(db.Model):
     email = db.Column(db.String(50), nullable=False, unique=True)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
+    feedback = db.relationship("Feedback")
 
     @classmethod
     def register(cls, username, password, email, first_name, last_name):
@@ -54,6 +55,6 @@ class Feedback(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100), nullable=False)
-    content = db.Column(db.Text, nullable=False)
+    feedback = db.Column(db.Text, nullable=False)
     username = db.Column(db.String, db.ForeignKey("users.username"))
-
+    user = db.relationship("User")

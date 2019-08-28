@@ -3,4 +3,16 @@
     <h1>Username: {{ user.username[0]|upper }}{{ user.username[1:] }}</h1>
     <h3>{{ user.first_name[0]|upper }}{{ user.first_name[1:] }} {{ user.last_name[0]|upper }}{{ user.last_name[1:] }}</h3>
     <h4><a href="mailto: {{ user.email }}">{{ user.email }}</a></h4>
+
+    {% for feedback in curr_user_feedback %}
+    <div class="row">
+        <div class="col-sm-6">
+            <h4>{{feedback.title}}</h4>
+            <p>{{feedback.feedback}}</p>
+            <a href="/feedback/{{feedback.id}}/update" class="btn btn-outline-secondary">Edit</a>
+            <a href="/feedback/{{feedback.id}}/delete" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+    <a href="/users/{{user.username}}/feedback/add" class="btn btn-primary mt-4">Add Feedback</a>
 {% endblock content %}
